@@ -45,29 +45,28 @@ if otv == "y":
     print("\\hline")
     print("\\end{tabular}")
 else:
+    print("table 1:")
     for i in range(50):
-        print("table 1:")
         print(i+1, '|', round(numbers[i], 4), '|',
-              round(numbers[i]-sr, 4), '|', round((numbers[i]-sr)**2, 4), "\\\\")  # Создание таблицв
+              round(numbers[i]-sr, 4), '|', round((numbers[i]-sr)**2, 4))  # Создание таблицв
     rho = 1/(sigma*math.sqrt(2*math.pi))  # Ро
     print("<t>N = ", sr, ' ', "Sigma = ", s, ' ', "sigma = ",
           sigma, ' ', "rho = ", rho)  # Нижняя строчка таблицы
 print("------------------------------")
-a = (max-min)/math.sqrt(50)  # Дельта Т
+a = (max-min)/7  # Дельта Т
 intervals = []
 rho_max_arr = []
-inter = int(a)
 chislo = min
 counter = 0
 while chislo < max:
     chislo += a
     counter += 1  # Подсчет максимального числа интервалов
 counter -= 1
+counter = 7
 counter1 = counter
 intervals.append(min)
 for i in range(counter1):
     intervals.append(min+a*(i+1))  # Интервалы
-intervals.append(max)
 counter += 2
 int_length = intervals[1]-intervals[0]
 
@@ -97,14 +96,14 @@ if otv == "y":
     for i in range(len(intervals)-1):
         print("\\hline")
         print("$[", round(intervals[i], 4), ';', round(intervals[i+1], 4), "]$", '&',
-              round(znach[i], 4), '&', round(znach[i]/(50*int_length), 4), '&', round(middle_value[i], 4), '&', rho_max_arr[i], "\\\\")
+              round(znach[i], 4), '&', round(znach[i]/(50*int_length), 4), '&', round(middle_value[i], 4), '&', round(rho_max_arr[i],4), "\\\\")
     print("\\hline")
     print("\\end{tabular}")
 else:
     print("table 2:")
     for i in range(len(intervals)-1):
         print("[", round(intervals[i], 4), ';', round(intervals[i+1], 4), "]", '|',
-              round(znach[i], 4), '|', round(znach[i]/(50*int_length), 4), '|', round(middle_value[i], 4), '|', rho_max_arr[i])
+              round(znach[i], 4), '|', round(znach[i]/(50*int_length), 4), '|', round(middle_value[i], 4), '|', round(rho_max_arr[i],4))
 sigma_arr_p = []
 sigma_arr_m = []
 for i in range(3):
